@@ -1,8 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
+
+// No tree shaking (200+ modules, heavy weight)
+// import * as R from 'ramda'
+// import { identity } from 'ramda'
+
+// Working tree shaking (4 modules, lightweight)
+import identity from 'ramda/src/identity'
+
+// Weird tree shaking (4 modules, but heavy weight)
+// import identity from 'ramda/es/identity'
+
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  // console.log(R.identity("foo"))
+  console.log(identity("foo"))
+
   return (
     <div className={styles.container}>
       <Head>
